@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/record"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dictionaryTranslationModelHeight"
+    android:background="@color/lightBackground">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/translatedWord"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/wordListNativePadding" />
+
+        <TextView
+            android:id="@+id/exampleSentence"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/wordListNativePadding" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/volumeImageBtn"
+        style="@style/iconStyle"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_volume_up_accent" />
+
+    <ImageButton
+        android:id="@+id/addImageButton"
+        style="@style/iconStyle"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/volumeImageBtn"
+        android:src="@drawable/ic_add_accent"
+        android:visibility="gone" />
+</RelativeLayout>

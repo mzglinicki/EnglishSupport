@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ficheCardView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    card_view:cardBackgroundColor="@color/lightBackground"
+    card_view:cardCornerRadius="@dimen/learnCardRadius"
+    card_view:cardElevation="@dimen/cardElevation">
+
+    <TextView
+        android:id="@+id/wordOnFiche"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/secondTextColor"
+        android:textSize="@dimen/subheadingTextSize" />
+
+</android.support.v7.widget.CardView>

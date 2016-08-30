@@ -1,0 +1,37 @@
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/primary_dark"
+    app:layout_scrollFlags="scroll|enterAlways">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/text_toolbarTitle"
+            android:textColor="@color/lightTextColor"
+            android:textSize="@dimen/subheadingTextSize" />
+
+        <include
+            android:id="@+id/toolbar_ic_edit"
+            layout="@layout/edit_icon"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/toolbar_ic_delete"
+            style="@style/iconStyle"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/toolbar_ic_edit"
+            android:src="@drawable/ic_delete_white"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>

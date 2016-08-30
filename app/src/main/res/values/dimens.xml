@@ -1,0 +1,93 @@
+<resources>
+
+    <!--TODO check if every dimen are using, -->
+
+    <!-- margins -->
+
+    <dimen name="mainMargin">16dp</dimen>
+    <dimen name="fabMargin">@dimen/mainMargin</dimen>
+    <dimen name="editTextMargin">@dimen/mainMargin</dimen>
+    <dimen name="mainButtonMargin">@dimen/mainMargin</dimen>
+
+    <!-- padding -->
+    <dimen name="mainPadding">16dp</dimen>
+    <dimen name="editTextPadding">@dimen/mainPadding</dimen>
+
+    <!-- Sizes for text -->
+
+    <dimen name="headlineTextSize">24sp</dimen>
+    <dimen name="titleTextSize">20sp</dimen>
+    <dimen name="subheadingTextSize">16sp</dimen>
+    <dimen name="bodyTextSize">14sp</dimen>
+    <dimen name="buttonTextSize">14sp</dimen>
+
+    <dimen name="toolbarHeight">56dp</dimen>
+
+    <!-- Sizes for button size -->
+
+    <dimen name="btnMainWidth">150dp</dimen>
+    <dimen name="btnMainHeight">36dp</dimen>
+
+    <!-- Icons -->
+
+    <dimen name="iconPadding">12dp</dimen>
+    <dimen name="icon_size">48dp</dimen>
+
+    <!-- Spinners -->
+
+    <dimen name="spinnerWidth">150dp</dimen>
+    <dimen name="spinnerMargin">10dp</dimen>
+
+    <!-- First page fiche -->
+
+    <dimen name="ficheMargin">20dp</dimen>
+    <dimen name="ficheHeight">100dp</dimen>
+    <dimen name="cardCornerRadius">5dp</dimen>
+    <dimen name="cardElevation">5dp</dimen>
+    <dimen name="ficheTitlePadding">10dp</dimen>
+
+    <!-- Languages list item -->
+
+    <dimen name="languagesListMargin">1dp</dimen>
+    <dimen name="itemCornerRadius">8dp</dimen>
+    <dimen name="listItemHeight">56dp</dimen>
+
+    <!-- Word list item -->
+
+    <dimen name="wordListItemHeight">56dp</dimen>
+    <dimen name="dictionaryTranslationModelHeight">72dp</dimen>
+
+    <!-- Learn fiche -->
+
+    <dimen name="cardMargin">11dp</dimen>
+    <dimen name="learnCardRadius">20dp</dimen>
+
+    <!-- Writing fragment -->
+
+    <dimen name="fieldWidth">300dp</dimen>
+    <dimen name="fieldHeight">50dp</dimen>
+    <dimen name="textFieldHeight">50dp</dimen>
+    <dimen name="sentenceFieldText">200dp</dimen>
+
+    <!-- Dictionary Activity-->
+
+    <dimen name="dicTextFieldHeight">100dp</dimen>
+    <dimen name="btnCornerRadius">2dp</dimen>
+    <dimen name="createTitlePadding">20dp</dimen>
+    <dimen name="dictionaryTopPadding">30dp</dimen>
+    <dimen name="wordListNativePadding">16dp</dimen>
+    <dimen name="wordListTranslatePadding">150dp</dimen>
+
+    <!-- Create Activity -->
+
+    <dimen name="lessonData">56dp</dimen>
+    <dimen name="tabIndicatorHeight">2dp</dimen>
+    <dimen name="lessonEditTextStartMargin">16dp</dimen>
+    <dimen name="lessonEditTextTopMargin">10dp</dimen>
+    <dimen name="transLangListPadding">150dp</dimen>
+    <dimen name="learnFragmentNavigatorMargin">16dp</dimen>
+    <dimen name="cardPadding">5dp</dimen>
+
+    <integer name="anim_duration_long">1000</integer>
+
+</resources>

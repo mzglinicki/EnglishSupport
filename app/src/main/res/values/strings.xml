@@ -1,0 +1,124 @@
+<resources>
+
+    <!--TODO check if every values are using-->
+
+    <string name="app_name">Dictionary</string>
+    <string name="btn_createLesson">Stwórz lekcję</string>
+    <string name="btn_dictionary">Słownik</string>
+    <string name="btn_learn">Ucz się </string>
+    <string name="btn_settings">Ustawienia</string>
+    <string name="textTodayFiche">Fiszka na dzisiaj:</string>
+    <string name="text_toolbarTitle">Your private dictionary</string>
+    <string name="tab_list">Lista</string>
+    <string name="tab_fiche">Fiszki</string>
+    <string name="tab_practiceSpelling">Pisownia</string>
+    <string name="btn_listenLesson">Słuchaj</string>
+    <string name="hint_writeTranslation">Wpisz słowo po angielsku</string>
+    <string name="hint_writeSentence">Wpisz zdanie</string>
+    <string name="label_lessonName">Nazwa lekcji:</string>
+    <string name="label_nativeWord">Słowo po Polsku</string>
+    <string name="label_translatedWord">Słowo po Angielsku</string>
+    <string name="label_writeSentence">Zdanie</string>
+    <string name="label_save">Zapisz</string>
+    <string name="label_cancel">Anuluj</string>
+    <string name="label_nextWord">Następne słowo</string>
+    <string name="label_end">Zakończ</string>
+    <string name="btn_endCreation">Zakończ tworzenie</string>
+    <string name="btn_next">Dalej</string>
+    <string name="hint_writeWordToTrans">Wpisz słowo po polsku</string>
+    <string name="btn_bing">Bing</string>
+    <string name="btn_myDictionary">Mój słownik</string>
+    <string name="text_emptyList">Lista lekcji jest pusta</string>
+    <string name="label_newLessonCreator">Kreator nowej lekcji</string>
+    <string name="hint_lessonName">Nazwa lekcji</string>
+    <string name="daily_fiche_word">słowo na dziś</string>
+    <string name="saved">Zapisano</string>
+    <string name="nativeLanguage">Język natywny</string>
+    <string name="translateLanguage">Język tłumaczenia</string>
+    <string name="btn_save">Zapisz</string>
+    <string name="btn_end">Zakończ</string>
+    <string name="btn_showWords">Pokaż słowa</string>
+
+
+    <string name="homeLessonName">Dom</string>
+    <string name="homeNativeLang">Polski</string>
+    <string name="homeTranslateLang">Angielski</string>
+    <string name="homeNativeWord">dom</string>
+    <string name="homeTranslateWord">home</string>
+    <string name="homeSentence">This is my home</string>
+    <string name="pressAgainToOut">Naciśnij ponownie by wyjść</string>
+
+    <string name="createWordTitle">Kreator słów</string>
+    <string name="listWordFragment">Lista słów</string>
+    <string name="press_again_to_out">Naciśnij ponownie by wyjść</string>
+    <string name="carLessonName">Samochód</string>
+    <string name="carNativeLang">Polski</string>
+    <string name="carTranslateLang">Angielski</string>
+    <string name="carNativeWord">skrzynia biegów</string>
+    <string name="carTranslateWord">gearbox</string>
+    <string name="carSentence">I had a truck, before I went over there, and it had a stick.</string>
+    <string name="undo">Cofnij</string>
+    <string name="deleted">Usunięto</string>
+    <string name="yes">tak</string>
+
+    <string-array name="defaultLessons">
+        <item>Czasowniki - część I</item>
+        <item>Czasowniki - część II</item>
+        <item>Czasowniki - część III</item>
+    </string-array>
+
+    <string-array name="polishDefaultWord">
+        <item>akceptować</item>
+        <item>pozwalać</item>
+        <item>pytać</item>
+        <item>wierzyć</item>
+        <item>pożyczać</item>
+        <item>łamać</item>
+        <item>przynosić</item>
+        <item>kopować</item>
+        <item>móc</item>
+        <item>odwoływać</item>
+        <item>zmieniać</item>
+        <item>czyścić</item>
+        <item>narzekać</item>
+        <item>liczyć</item>
+        <item>tańczyć</item>
+    </string-array>
+
+    <string-array name="englishDefaultWord">
+        <item>accept</item>
+        <item>allow</item>
+        <item>ask</item>
+        <item>believe</item>
+        <item>borrow</item>
+        <item>break</item>
+        <item>bring</item>
+        <item>buy</item>
+        <item>can</item>
+        <item>cancel</item>
+        <item>change</item>
+        <item>clean</item>
+        <item>complain</item>
+        <item>count</item>
+        <item>dance</item>
+    </string-array>
+
+    <string-array name="defaultSentence">
+        <item>The attacks are immoral and the international community cannot accept them</item>
+        <item>Do you think they would allow that?</item>
+        <item>Can I ask you a question?</item>
+        <item>Do you really believe that?</item>
+        <item>If you need something just borrow it from me</item>
+        <item>The thief broke the window and got inside</item>
+        <item>Could you bring me some more wine?</item>
+        <item>Where can I buy this book?</item>
+        <item>Can you tell me where the museum is?</item>
+        <item>I am very sorry, but I have to cancel our meeting</item>
+        <item>Maybe she will change her mind when we tell her the truth</item>
+        <item>Could you please give me a clean fork?</item>
+        <item>You have got nothing to complain about</item>
+        <item>She quickly counted the money</item>
+        <item>She is interested in modern dance</item>
+    </string-array>
+
+</resources>

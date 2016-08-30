@@ -1,0 +1,81 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnLearn"
+        style="@style/mainButtonStyle"
+        android:text="Lekcje" />
+
+    <Button
+        android:id="@+id/btnDictionary"
+        style="@style/mainButtonStyle"
+        android:text="Słownik" />
+
+    <Button
+        android:id="@+id/btnCredits"
+        style="@style/mainButtonStyle"
+        android:text="O aplikacji" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/dailyFiche"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ficheHeight"
+        android:layout_margin="@dimen/ficheMargin"
+        card_view:cardBackgroundColor="@color/lightBackground"
+        card_view:cardCornerRadius="@dimen/cardCornerRadius"
+        card_view:cardElevation="@dimen/cardElevation">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/fitchTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/ficheTitlePadding"
+                android:text="@string/textTodayFiche"
+                android:textColor="@color/mainTextColor"
+                android:textSize="@dimen/subheadingTextSize" />
+
+            <TextView
+                android:id="@+id/dailyWord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@color/mainTextColor"
+                android:textSize="@dimen/bodyTextSize" />
+
+            <ImageButton
+                android:id="@+id/emptyStarImageBtn"
+                style="@style/iconStyle"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_star_border_accent" />
+
+            <ImageButton
+                android:id="@+id/starImageBtn"
+                style="@style/iconStyle"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_star_accent"
+                android:visibility="gone" />
+
+            <ImageButton
+                android:id="@+id/volumeImageBtn"
+                style="@style/iconStyle"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_volume_up_accent" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <include
+        android:id="@+id/lesson"
+        layout="@layout/lesson_model" />
+
+</LinearLayout>

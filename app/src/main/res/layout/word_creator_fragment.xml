@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/createWordLayout"
+    style="@style/mainTheme"
+    android:focusableInTouchMode="true"
+    android:isScrollContainer="true">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:isScrollContainer="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/lessonNameField"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/wordListItemHeight"
+            android:background="@color/primary"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:textColor="@color/lightTextColor"
+            android:textSize="@dimen/subheadingTextSize" />
+
+        <TextView
+            android:id="@+id/creatorTitle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/wordListItemHeight"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:text="Wpisz słowo"
+            android:textColor="@color/hintTextColor"
+            android:textSize="@dimen/subheadingTextSize" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/nativeWordInputLayout"
+            style="@style/lessonEditText">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/inputNativeWord"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/subheadingTextSize" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/translateWordInputLayout"
+            style="@style/lessonEditText">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/inputTranslateWord"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/subheadingTextSize" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout style="@style/lessonEditText">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/inputSentence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Zdanie"
+                android:textSize="@dimen/subheadingTextSize" />
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/saveFAB"
+        style="@style/floatingActionButtonStyle"
+        android:src="@drawable/ic_save__24dp" />
+
+</android.support.design.widget.CoordinatorLayout>

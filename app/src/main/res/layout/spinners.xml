@@ -1,0 +1,15 @@
+<LinearLayout android:id="@+id/spinners"
+    android:layout_gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <fr.ganfra.materialspinner.MaterialSpinner
+        android:id="@+id/spinnerNativeLang"
+        style="@style/spinners" />
+
+    <fr.ganfra.materialspinner.MaterialSpinner
+        android:id="@+id/spinnerTranslateLang"
+        style="@style/spinners" />
+
+</LinearLayout>

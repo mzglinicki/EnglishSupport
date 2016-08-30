@@ -1,0 +1,206 @@
+<resources>
+
+    <!-- Base application theme. -->
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+
+    </style>
+
+    <!-- Theme for all Activity -->
+
+    <style name="mainTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/background</item>
+        <item name="android:orientation">vertical</item>
+
+    </style>
+
+    <style name="spinners">
+
+        <item name="android:layout_width">@dimen/spinnerWidth</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/spinnerBackground</item>
+        <item name="android:layout_margin">@dimen/spinnerMargin</item>
+
+    </style>
+
+    <!-- Activity Main theme -->
+
+    <style name="mainButtonStyle">
+
+        <item name="android:layout_width">@dimen/btnMainWidth</item>
+        <item name="android:layout_height">@dimen/btnMainHeight</item>
+        <item name="android:layout_margin">@dimen/mainButtonMargin</item>
+        <item name="android:background">@drawable/btn_round_corner</item>
+        <item name="android:textColor">@color/lightTextColor</item>
+
+    </style>
+
+    <style name="createPageButton">
+
+        <item name="android:layout_width">@dimen/btnMainWidth</item>
+        <item name="android:layout_height">@dimen/btnMainHeight</item>
+        <item name="android:layout_margin">@dimen/mainButtonMargin</item>
+        <item name="android:background">@color/btnColor</item>
+        <item name="android:textColor">@color/lightTextColor</item>
+
+    </style>
+
+    <style name="iconStyle">
+
+        <item name="android:layout_width">@dimen/icon_size</item>
+        <item name="android:layout_height">@dimen/icon_size</item>
+        <item name="android:padding">@dimen/iconPadding</item>
+        <item name="android:background">@android:color/transparent</item>
+
+    </style>
+
+    <!-- Writing Fragment -->
+
+    <style name="inputWordField">
+
+        <item name="android:layout_width">@dimen/fieldWidth</item>
+        <item name="android:layout_height">@dimen/fieldHeight</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_margin">@dimen/editTextMargin</item>
+        <item name="android:background">@color/lightBackground</item>
+        <item name="android:orientation">horizontal</item>
+
+    </style>
+
+    <style name="fieldText">
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@color/lightBackground</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/subheadingTextSize</item>
+
+    </style>
+
+    <style name="dictionaryButtonStyle">
+
+        <item name="android:layout_width">@dimen/btnMainWidth</item>
+        <item name="android:layout_height">@dimen/btnMainHeight</item>
+        <item name="android:layout_margin">@dimen/mainButtonMargin</item>
+        <item name="android:background">@drawable/btn_round_corner</item>
+        <item name="android:textColor">@color/lightTextColor</item>
+
+    </style>
+
+    <!-- Activity Lesson -->
+
+    <style name="lessonData">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/lessonData</item>
+        <item name="android:background">@color/lessonCreatorTitleBack</item>
+        <item name="android:textColor">@color/lightTextColor</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/subheadingTextSize</item>
+
+    </style>
+
+    <style name="langTextStyle">
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/editTextMargin</item>
+        <item name="android:textSize">@dimen/subheadingTextSize</item>
+        <item name="android:textColor">@color/lightTextColor</item>
+
+    </style>
+
+    <style name="lessonEditText">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/lessonEditTextStartMargin</item>
+        <item name="android:layout_marginEnd">@dimen/lessonEditTextStartMargin</item>
+        <item name="android:layout_marginBottom">@dimen/lessonEditTextTopMargin</item>
+
+    </style>
+
+    <!-- Activity Dictionary -->
+
+    <style name="dictionaryTextFields">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dicTextFieldHeight</item>
+        <item name="android:layout_margin">@dimen/editTextMargin</item>
+        <item name="android:background">@color/lightBackground</item>
+        <item name="android:paddingStart">@dimen/editTextPadding</item>
+
+    </style>
+
+    <!-- Activity create theme -->
+
+    <style name="addWordTextFields">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+
+    </style>
+
+    <style name="toolbarIconStyle">
+
+        <item name="android:layout_width">@dimen/icon_size</item>
+        <item name="android:layout_height">@dimen/icon_size</item>
+        <item name="android:padding">@dimen/iconPadding</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_centerVertical">true</item>
+
+    </style>
+
+    <style name="floatingActionButtonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">end|bottom</item>
+        <item name="android:layout_margin">@dimen/fabMargin</item>
+    </style>
+
+    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabGravity">fill</item>
+        <item name="tabMaxWidth">0dp</item>
+        <item name="tabBackground">@color/tabBackGround</item>
+        <item name="tabIndicatorHeight">@dimen/tabIndicatorHeight</item>
+    </style>
+
+    <style name="wordListHeader">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/subheadingTextSize</item>
+    </style>
+
+    <style name="lessonModelTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">@dimen/mainPadding</item>
+        <item name="android:paddingEnd">@dimen/mainPadding</item>
+        <item name="android:textColor">@color/clicableTextColor</item>
+        <item name="android:textSize">@dimen/buttonTextSize</item>
+
+    </style>
+
+    <style name="lessonModelLessonNameStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/mainTextColor</item>
+        <item name="android:textSize">@dimen/subheadingTextSize</item>
+
+
+    </style>
+
+
+</resources>

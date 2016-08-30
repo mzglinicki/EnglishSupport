@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nestedScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/learnWritingLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/polishWord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/lessonEditTextStartMargin"
+            android:layout_marginStart="@dimen/lessonEditTextStartMargin"
+            android:layout_marginTop="@dimen/lessonEditTextStartMargin"
+            android:textColor="@color/mainTextColor"
+            android:textSize="@dimen/headlineTextSize" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/englishWordLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/lessonEditTextStartMargin"
+            android:layout_marginTop="@dimen/lessonEditTextStartMargin">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/englishWordUserInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Wpisz tłumaczenie"
+                android:textSize="@dimen/subheadingTextSize" />
+        </android.support.design.widget.TextInputLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/englishSentenceLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="@dimen/lessonEditTextStartMargin"
+                android:layout_marginTop="@dimen/lessonEditTextStartMargin">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/englishSentenceUserInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Odsłuchaj zdanie i wpisz"
+                    android:textSize="@dimen/subheadingTextSize" />
+            </android.support.design.widget.TextInputLayout>
+
+            <ImageButton
+                android:id="@+id/readSentenceImageBtn"
+                style="@style/iconStyle"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/lessonEditTextStartMargin"
+                android:src="@drawable/ic_volume_up_accent" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/lessonEditTextStartMargin"
+            android:layout_marginStart="@dimen/lessonEditTextStartMargin"
+            android:layout_marginTop="@dimen/lessonEditTextStartMargin">
+
+            <ImageButton
+                android:id="@+id/skipPreviousImageBtn"
+                style="@style/iconStyle"
+                android:src="@drawable/ic_skip_previous" />
+
+            <TextView
+                android:id="@+id/checkAnswerTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:text="Sprawdź"
+                android:textColor="@color/accent"
+                android:textSize="@dimen/subheadingTextSize" />
+
+            <ImageButton
+                android:id="@+id/skipNextImageBtn"
+                style="@style/iconStyle"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_skip_next" />
+
+        </RelativeLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/translatedWordTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/lessonEditTextStartMargin"
+            android:layout_marginTop="@dimen/lessonEditTextStartMargin"
+            android:clickable="false"
+            android:focusableInTouchMode="false">
+
+            <EditText
+                android:id="@+id/translatedWordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusableInTouchMode="false"
+                android:hint="Tłumaczenie"
+                android:textSize="@dimen/subheadingTextSize" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/translatedSentenceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/lessonEditTextStartMargin"
+            android:layout_marginTop="@dimen/lessonEditTextStartMargin"
+            android:clickable="false"
+            android:focusableInTouchMode="false">
+
+            <EditText
+                android:id="@+id/translatedSentenceTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusableInTouchMode="false"
+                android:hint="Zdanie"
+                android:textSize="@dimen/subheadingTextSize" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginEnd="@dimen/lessonEditTextStartMargin"
+            android:layout_marginStart="@dimen/lessonEditTextStartMargin"
+            android:layout_marginTop="@dimen/lessonEditTextStartMargin">
+
+            <TextView
+                android:id="@+id/correctAnswerTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Dobre odpowiedzie: "
+                android:textColor="@color/accent" />
+
+            <TextView
+                android:id="@+id/correctAnswerAmountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/correctAnswerTextView"
+                android:textColor="@color/accent" />
+
+            <TextView
+                android:id="@+id/currentItemPositionTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/deliminator"
+                android:textColor="@color/accent" />
+
+            <TextView
+                android:id="@+id/deliminator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/wordAmountTextView"
+                android:text="/"
+                android:textColor="@color/accent" />
+
+            <TextView
+                android:id="@+id/wordAmountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:textColor="@color/accent" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

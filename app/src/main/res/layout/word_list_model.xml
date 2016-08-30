@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/record"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/wordListItemHeight"
+    android:background="@color/lightBackground">
+
+    <TextView
+        android:id="@+id/nativeWordTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:paddingStart="@dimen/wordListNativePadding"/>
+
+    <TextView
+        android:id="@+id/translatedWordEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:paddingStart="@dimen/wordListTranslatePadding" />
+
+    <ImageButton
+        android:id="@+id/volumeImageBtn"
+        style="@style/iconStyle"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_volume_up_accent"
+        android:visibility="visible" />
+
+    <ImageButton
+        android:id="@+id/deleteImageButton"
+        style="@style/iconStyle"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_delete_accent"
+        android:visibility="gone" />
+
+    <ImageButton
+        android:id="@+id/editImageButton"
+        style="@style/iconStyle"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/deleteImageButton"
+        android:src="@drawable/ic_mode_edit_accent"
+        android:visibility="gone" />
+</RelativeLayout>

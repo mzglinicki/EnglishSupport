@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/expandedDetailModel"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="@color/lightBackground"
+    android:clickable="true"
+    android:paddingLeft="40dp">
+
+    <TextView
+        android:id="@+id/lessonNameTextField"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/mainTextColor"
+        android:textSize="@dimen/bodyTextSize" />
+
+</LinearLayout>

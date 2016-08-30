@@ -1,0 +1,12 @@
+**./*.iml
+*.iml
+**/.settings
+.idea
+out
+**/bin/*
+**/gen/*
+*.apk
+*.ap_
+.gradle
+build/
+local.properties

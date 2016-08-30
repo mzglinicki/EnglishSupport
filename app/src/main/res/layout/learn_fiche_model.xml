@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="false"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/learnFicheCardView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="@dimen/ficheMargin"
+        android:clickable="false"
+        android:focusableInTouchMode="false"
+        card_view:cardBackgroundColor="@color/lightBackground"
+        card_view:cardCornerRadius="@dimen/cardCornerRadius">
+
+        <TextView
+            android:id="@+id/ficheTextField"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:textColor="@color/mainTextColor"
+            android:textSize="@dimen/subheadingTextSize" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="bottom"
+            android:gravity="end|center_vertical"
+            android:paddingEnd="@dimen/mainPadding">
+
+            <TextView
+                android:id="@+id/currentItemPositionTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end|bottom"
+                android:gravity="center"
+                android:textColor="@color/accent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_gravity="end|bottom"
+                android:gravity="center"
+                android:text="/"
+                android:textColor="@color/accent" />
+
+            <TextView
+                android:id="@+id/ficheAmountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_gravity="end|bottom"
+                android:gravity="center"
+                android:textColor="@color/accent" />
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

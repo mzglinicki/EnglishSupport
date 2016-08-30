@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/ficheHeight"
+    android:layout_gravity="bottom"
+    android:layout_margin="@dimen/ficheMargin"
+    card_view:cardBackgroundColor="@color/lightBackground"
+    card_view:cardCornerRadius="@dimen/cardCornerRadius"
+    card_view:cardElevation="@dimen/cardElevation">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/fitchTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/ficheTitlePadding"
+            android:text="@string/textTodayFiche"
+            android:textColor="@color/mainTextColor"
+            android:textSize="@dimen/subheadingTextSize" />
+
+        <TextView
+            android:id="@+id/dailyWord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/mainTextColor"
+            android:textSize="@dimen/bodyTextSize" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

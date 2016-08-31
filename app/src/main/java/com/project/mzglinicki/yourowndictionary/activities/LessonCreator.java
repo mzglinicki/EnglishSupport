@@ -1,9 +1,7 @@
 package com.project.mzglinicki.yourowndictionary.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -21,11 +19,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.mzglinicki.yourowndictionary.AppUtility;
-import com.project.mzglinicki.yourowndictionary.Card;
 import com.project.mzglinicki.yourowndictionary.Constants;
 import com.project.mzglinicki.yourowndictionary.MediaManager;
 import com.project.mzglinicki.yourowndictionary.R;
-import com.project.mzglinicki.yourowndictionary.adapters.CardsAdapter;
 import com.project.mzglinicki.yourowndictionary.adapters.WordsListRecycleAdapter;
 import com.project.mzglinicki.yourowndictionary.realmDb.LessonDbModel;
 import com.project.mzglinicki.yourowndictionary.realmDb.RealmDbHelper;
@@ -33,7 +29,6 @@ import com.project.mzglinicki.yourowndictionary.realmDb.WordDbModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -52,8 +47,6 @@ public class LessonCreator extends AppCompatActivity implements WordsListRecycle
     ImageView collapsingToolbarImage;
     @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.appBar)
-    AppBarLayout appBarLayout;
     @Bind(R.id.lessonName)
     AppCompatEditText lessonNameEditText;
     @Bind(R.id.inputNativeWord)
@@ -68,10 +61,6 @@ public class LessonCreator extends AppCompatActivity implements WordsListRecycle
     TextView emptyListText;
     @Bind(R.id.wordListHeader)
     RelativeLayout wordListHeader;
-    //    @Bind(R.id.cardViewFrame)
-//    SwipeCardView cardViewFrame;
-//    @Bind(R.id.selectImageTextView)
-//    TextView selectImageTextView;
     @Bind({R.id.inputNativeWord, R.id.inputTranslateWord, R.id.inputSentence})
     List<AppCompatEditText> inputFields;
     @Bind(R.id.addFAB)
@@ -84,24 +73,20 @@ public class LessonCreator extends AppCompatActivity implements WordsListRecycle
     List<FloatingActionButton> fABToToggle;
 
     private WordsListRecycleAdapter wordListAdapter;
-    private MediaManager mediaManager;
-    private AppUtility appUtilityManager;
-    private RealmDbHelper dbHelper;
-    private List<WordDbModel> listOfWords;
     private List<WordDbModel> itemToRemove;
+    private List<WordDbModel> listOfWords;
+    private AppUtility appUtilityManager;
+    private MediaManager mediaManager;
+    private RealmDbHelper dbHelper;
     private String lessonName;
-    private String nativeWord;
-    private String translateWord;
+    private String polishWord;
+    private String englishWord;
     private String sentence;
+    private boolean isFirstSaved;
+    private boolean isEditLesson;
     private int lessonId;
-    private boolean isFirstSaved = true;
-    //    private ArrayList<Card> listOfCards;
-    private CardsAdapter arrayAdapter;
-    private int lessonImageResId;
     private int editWordId;
-    private boolean editLesson = false;
-    private LessonDbModel lessonToEdit;
-    private int randomImage;
+    private int lessonToEditId;
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {
@@ -109,198 +94,15 @@ public class LessonCreator extends AppCompatActivity implements WordsListRecycle
         setContentView(R.layout.activity_creator);
         ButterKnife.bind(this);
 
-
-        appUtilityManager = AppUtility.getInstance(this);
-        dbHelper = RealmDbHelper.getInstance(this);
-        mediaManager = MediaManager.getInstance(this);
-
-
-        lessonImageResId = getRandomImage();
-
-
+        initFields();
         initToolbar();
-
-//        listOfCards = new ArrayList<>();
-
-//        addLessonImages(listOfCards);
-//        arrayAdapter = new CardsAdapter(this, listOfCards);
-//        cardViewFrame.setAdapter(arrayAdapter);
-//        cardViewFrame.setFlingListener(new SwipeCardView.OnCardFlingListener() {
-//            @Override
-//            public void onCardExitLeft(final Object dataObject) {
-//                listOfCards.add((Card) dataObject);
-//                arrayAdapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCardExitRight(final Object dataObject) {
-//                listOfCards.add((Card) dataObject);
-//                arrayAdapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onAdapterAboutToEmpty(final int itemsInAdapter) {
-//            }
-//
-//            @Override
-//            public void onScroll(final float scrollProgressPercent) {
-//            }
-//
-//            @Override
-//            public void onCardExitTop(final Object dataObject) {
-//                listOfCards.add((Card) dataObject);
-//                arrayAdapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCardExitBottom(final Object dataObject) {
-//                listOfCards.add((Card) dataObject);
-//                arrayAdapter.notifyDataSetChanged();
-//            }
-//        });
-
+        setupWordsRecycleView();
         setOnTouchListener(coordinatorLayout);
 
-        listOfWords = new ArrayList<>();
-        itemToRemove = new ArrayList<>();
-        setupWordsRecycleView();
-
-        final int lessonToEditId = getIntent().getIntExtra(Constants.LESSON_ID_KEY, -1);
-
+        lessonToEditId = getIntent().getIntExtra(Constants.LESSON_ID_KEY, -1);
         if (lessonToEditId != -1) {
-            editLesson = true;
-            lessonToEdit = dbHelper.getLesson(lessonToEditId);
-            lessonNameEditText.setText(lessonToEdit.getLessonName());
-
-            for (final WordDbModel wordDbModel : dbHelper.getLessonWords(lessonToEditId)) {
-                listOfWords.add(wordDbModel);
-            }
-            emptyListText.setVisibility(View.GONE);
-            wordListHeader.setVisibility(View.VISIBLE);
-            wordListAdapter.notifyDataSetChanged();
-            nativeInputEditText.setText(listOfWords.get(0).getNativeWord());
-            translateInputEditText.setText(listOfWords.get(0).getTranslatedWord());
-            inputSentenceEditText.setText(listOfWords.get(0).getExampleSentence());
-            collapsingToolbar.setTitle("Edytor lekcji");
-            editWordId = listOfWords.get(0).getWordId();
-            collapsingToolbarImage.setImageResource(lessonToEdit.getLessonImageResId());
+            editLesson(lessonToEditId);
         }
-    }
-
-    private void addLessonImages(final ArrayList<Card> listOfCards) {
-
-        //TODO
-
-        final Card card2 = new Card();
-        card2.setLessonImageResId(R.mipmap.palace);
-        listOfCards.add(card2);
-
-        final Card card = new Card();
-        card.setLessonImageResId(R.mipmap.flag);
-        listOfCards.add(card);
-
-        final Card card3 = new Card();
-        card3.setLessonImageResId(R.mipmap.cab);
-        listOfCards.add(card3);
-    }
-
-//    @Override
-//    public void onBackPressed() {
-//
-//        startActivity(new Intent(LessonCreator.this, MainActivity.class));
-//        overridePendingTransition(R.animator.trans_right_in, R.animator.trans_right_out);
-//        finish();
-//    }
-
-    private void setupWordsRecycleView() {
-        wordListAdapter = new WordsListRecycleAdapter(this, listOfWords, this);
-        wordsRecycleView.setHasFixedSize(true);
-        wordsRecycleView.setAdapter(wordListAdapter);
-        wordsRecycleView.setLayoutManager(new LinearLayoutManager(this));
-    }
-
-    @OnClick(R.id.addFAB)
-    public void onFABClick() {
-
-        if (areInputDataCorrect()) {
-            if (!editLesson) {
-                createNewData();
-            } else {
-                editExistingLesson();
-            }
-        } else {
-            Toast.makeText(this, "Wprowadź wszystkie dane", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void createNewData() {
-        if (isFirstSaved) {
-            lessonId = dbHelper.createLessonInDb(lessonName, lessonImageResId);
-            setupLessonNamedView();
-            isFirstSaved = false;
-        }
-        listOfWords.add(dbHelper.createWord(nativeWord, translateWord, sentence, lessonId));
-        doAfterWordSaved();
-    }
-
-    private void editExistingLesson() {
-        if (isFirstSaved) {
-            dbHelper.updateLessonData(lessonName, lessonImageResId, lessonToEdit.getLessonId());
-            isFirstSaved = false;
-            setupLessonNamedView();
-        }
-        dbHelper.updateWordInDb(nativeWord, translateWord, sentence, editWordId);
-        doAfterWordSaved();
-    }
-
-    private void setOnTouchListener(final View view) {
-        view.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(final View v, final MotionEvent event) {
-                lessonNameEditText.clearFocus();
-                appUtilityManager.hideSoftInput(view);
-                return true;
-            }
-        });
-    }
-
-    private void doAfterWordSaved() {
-        clearInputFields();
-        wordListAdapter.notifyDataSetChanged();
-        if (!listOfWords.isEmpty()) {
-            emptyListText.setVisibility(View.GONE);
-            wordListHeader.setVisibility(View.VISIBLE);
-        }
-        Toast.makeText(LessonCreator.this, getResources().getString(R.string.saved), Toast.LENGTH_SHORT).show();
-    }
-
-    private void setupLessonNamedView() {
-        collapsingToolbar.setTitle(lessonName);
-        lessonNameEditText.setVisibility(View.GONE);
-//        cardViewFrame.setVisibility(View.GONE);
-//        selectImageTextView.setVisibility(View.GONE);
-    }
-
-    private boolean areInputDataCorrect() {
-        nativeWord = nativeInputEditText.getText().toString();
-        translateWord = translateInputEditText.getText().toString();
-        sentence = inputSentenceEditText.getText().toString();
-        lessonName = lessonNameEditText.getText().toString();
-
-        return !(nativeWord.isEmpty() || translateWord.isEmpty() || sentence.isEmpty() || lessonName.isEmpty());
-    }
-
-    private void clearInputFields() {
-        for (final AppCompatEditText inputField : inputFields) {
-            inputField.setText("");
-            inputField.clearFocus();
-        }
-    }
-
-    private void initToolbar() {
-        setSupportActionBar(toolbar);
-        collapsingToolbarImage.setImageResource(lessonImageResId);
-        collapsingToolbar.setTitle("Kreator nowej lekcji");
     }
 
     @Override
@@ -317,12 +119,178 @@ public class LessonCreator extends AppCompatActivity implements WordsListRecycle
 
     @Override
     public void onLongClick(final WordDbModel model) {
+
+        if (isEditLesson) {
+            return;
+        }
+
         for (final WordDbModel word : listOfWords) {
             if (word.isEditEnabled() && !word.equals(model)) {
                 dbHelper.setWordEditMode(word, false);
             }
         }
         dbHelper.setWordEditMode(model, !model.isEditEnabled());
+        wordListAdapter.notifyDataSetChanged();
+    }
+
+    @OnClick(R.id.addFAB)
+    public void onFABClick() {
+
+        if (areInputDataCorrect()) {
+            createNewData();
+        } else {
+            Toast.makeText(this, "Wprowadź wszystkie dane", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @OnClick(R.id.saveEditFAB)
+    public void onSaveEditFAB() {
+
+        if (areInputDataCorrect()) {
+            editWord();
+        } else {
+            Toast.makeText(this, R.string.inputAllDate, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @OnClick(R.id.closeEditFAB)
+    public void onCloseEditFAB() {
+        toggleFABsVisibility();
+        setupWordListEditMode(false);
+        clearInputFields();
+    }
+
+    private void initFields() {
+        appUtilityManager = AppUtility.getInstance(this);
+        dbHelper = RealmDbHelper.getInstance(this);
+        mediaManager = MediaManager.getInstance(this);
+        listOfWords = new ArrayList<>();
+        itemToRemove = new ArrayList<>();
+        isFirstSaved = true;
+        isEditLesson = false;
+    }
+
+    private void editLesson(final int lessonToEditId) {
+        isEditLesson = true;
+
+        final LessonDbModel lessonToEdit = dbHelper.getLesson(lessonToEditId);
+        final String editLessonName = lessonToEdit.getLessonName();
+        final int editLessonImageResId = lessonToEdit.getLessonImageResId();
+        listOfWords = getLessonToEditWords(lessonToEditId);
+
+        setupWordListEditMode(true);
+        setupVisibility();
+        setupEditLessonCollapsingToolbar(editLessonName, editLessonImageResId);
+
+        lessonNameEditText.setText(editLessonName);
+        wordListAdapter.notifyDataSetChanged();
+    }
+
+    private void setupEditLessonCollapsingToolbar(final String editLessonName, final int editLessonImageResId) {
+        collapsingToolbar.setTitle(editLessonName);
+        collapsingToolbarImage.setImageResource(editLessonImageResId);
+    }
+
+    private void setupVisibility() {
+        emptyListText.setVisibility(View.GONE);
+        closeEditFAB.setVisibility(View.GONE);
+        wordListHeader.setVisibility(View.VISIBLE);
+        saveEditFAB.setVisibility(View.VISIBLE);
+        addFAB.setVisibility(View.VISIBLE);
+    }
+
+    private List<WordDbModel> getLessonToEditWords(final int lessonToEditId) {
+
+        final List<WordDbModel> editableWords = new ArrayList<>();
+
+        for (final WordDbModel wordDbModel : dbHelper.getLessonWords(lessonToEditId)) {
+            editableWords.add(wordDbModel);
+        }
+        return editableWords;
+    }
+
+    private void setupWordsRecycleView() {
+        wordListAdapter = new WordsListRecycleAdapter(this, listOfWords, this);
+        wordsRecycleView.setHasFixedSize(true);
+        wordsRecycleView.setAdapter(wordListAdapter);
+        wordsRecycleView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void createNewData() {
+
+        if (isFirstSaved && !isEditLesson) {
+            lessonId = dbHelper.createLessonInDb(lessonName);
+            collapsingToolbar.setTitle(lessonName);
+            isFirstSaved = false;
+        }
+
+        if (isEditLesson) {
+            listOfWords.add(dbHelper.createWord(polishWord, englishWord, sentence, lessonToEditId));
+        } else {
+            listOfWords.add(dbHelper.createWord(polishWord, englishWord, sentence, lessonId));
+        }
+
+        invalidateViewAfterSaved();
+    }
+
+    private void invalidateViewAfterSaved() {
+        clearInputFields();
+        isListOfWordsEmpty();
+        wordListAdapter.notifyDataSetChanged();
+        Toast.makeText(LessonCreator.this, getResources().getString(R.string.saved), Toast.LENGTH_SHORT).show();
+    }
+
+    private void editWord() {
+
+        if (isEditLesson) {
+            dbHelper.updateLessonData(lessonName, lessonToEditId);
+            dbHelper.updateWordInDb(polishWord, englishWord, sentence, editWordId);
+            collapsingToolbar.setTitle(lessonName);
+        } else {
+            dbHelper.updateWordInDb(polishWord, englishWord, sentence, editWordId);
+            toggleFABsVisibility();
+            setupWordListEditMode(false);
+        }
+        clearInputFields();
+        Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show();
+    }
+
+    private void setOnTouchListener(final View view) {
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(final View v, final MotionEvent event) {
+                lessonNameEditText.clearFocus();
+                appUtilityManager.hideSoftInput(view);
+                return true;
+            }
+        });
+    }
+
+    private boolean areInputDataCorrect() {
+        polishWord = nativeInputEditText.getText().toString();
+        englishWord = translateInputEditText.getText().toString();
+        sentence = inputSentenceEditText.getText().toString();
+        lessonName = lessonNameEditText.getText().toString();
+
+        return !(polishWord.isEmpty() || englishWord.isEmpty() || sentence.isEmpty() || lessonName.isEmpty());
+    }
+
+    private void clearInputFields() {
+        for (final AppCompatEditText inputField : inputFields) {
+            inputField.setText("");
+            inputField.clearFocus();
+        }
+    }
+
+    private void initToolbar() {
+        setSupportActionBar(toolbar);
+        collapsingToolbar.setTitle(getString(R.string.lessonCreatorTitle));
+    }
+
+    private void setupWordListEditMode(final boolean editable) {
+        for (final WordDbModel word : listOfWords) {
+            dbHelper.setWordEditMode(word, editable);
+        }
         wordListAdapter.notifyDataSetChanged();
     }
 
@@ -342,7 +310,9 @@ public class LessonCreator extends AppCompatActivity implements WordsListRecycle
 
         editWordId = model.getWordId();
 
-        setEditModeFABsVisible();
+        if (!isEditLesson) {
+            setEditModeFABsVisible();
+        }
 
         nativeInputEditText.setText(model.getNativeWord());
         translateInputEditText.setText(model.getTranslatedWord());
@@ -392,6 +362,10 @@ public class LessonCreator extends AppCompatActivity implements WordsListRecycle
             dbHelper.deleteWordFromDb(itemToRemove.get(0).getWordId());
         }
         itemToRemove.remove(model);
+        isListOfWordsEmpty();
+    }
+
+    private void isListOfWordsEmpty() {
         if (listOfWords.isEmpty()) {
             emptyListText.setVisibility(View.VISIBLE);
             wordListHeader.setVisibility(View.GONE);
@@ -402,46 +376,5 @@ public class LessonCreator extends AppCompatActivity implements WordsListRecycle
         listOfWords.add(position, model);
         wordListAdapter.notifyItemInserted(position);
         itemToRemove.remove(model);
-    }
-
-//    @OnClick(R.id.selectImageTextView)
-//    public void onSelectImageClick() {
-//        lessonImageResId = arrayAdapter.getCurrentItemResId();
-//        collapsingToolbarImage.setImageResource(lessonImageResId);
-//    }
-
-    @OnClick(R.id.saveEditFAB)
-    public void onSaveEditFAB() {
-        dbHelper.updateWordInDb(nativeInputEditText.getText().toString(), translateInputEditText.getText().toString(), inputSentenceEditText.getText().toString(), editWordId);
-        toggleFABsVisibility();
-        clearInputFields();
-        clearEditMode();
-        Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show();
-    }
-
-    @OnClick(R.id.closeEditFAB)
-    public void onCloseEditFAB() {
-        toggleFABsVisibility();
-        clearEditMode();
-        clearInputFields();
-    }
-
-    private void clearEditMode() {
-        for (final WordDbModel word : listOfWords) {
-            dbHelper.setWordEditMode(word, false);
-        }
-        wordListAdapter.notifyDataSetChanged();
-    }
-
-    public int getRandomImage() {
-
-        final List<Integer> images = new ArrayList<>();
-        final Random random = new Random();
-        images.add(R.mipmap.palace);
-        images.add(R.mipmap.flag);
-        images.add(R.mipmap.cab);
-        images.add(R.mipmap.london);
-
-        return images.get(random.nextInt(images.size()));
     }
 }

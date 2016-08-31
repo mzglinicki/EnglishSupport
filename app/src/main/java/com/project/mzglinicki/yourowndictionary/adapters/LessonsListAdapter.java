@@ -47,13 +47,13 @@ public class LessonsListAdapter extends RecyclerView.Adapter<LessonsViewHolder> 
                 return true;
             }
         });
-        setupClickListeners(holder.getBtnLearn(), model, position);
-        setupClickListeners(holder.getBtnTest(), model, position);
-        setupClickListeners(holder.getBtnEdit(), model, position);
-        setupClickListeners(deleteImageBtn, model, position);
+        setupClickListeners(holder.getBtnLearn(), model, position, holder);
+        setupClickListeners(holder.getBtnTest(), model, position, holder);
+        setupClickListeners(holder.getBtnEdit(), model, position, holder);
+        setupClickListeners(deleteImageBtn, model, position, holder);
     }
 
-    private void setupClickListeners(final View view, final LessonDbModel lesson, final int position) {
+    private void setupClickListeners(final View view, final LessonDbModel lesson, final int position, final LessonsViewHolder holder) {
 
         if (onClickListener == null) {
             return;
@@ -73,7 +73,7 @@ public class LessonsListAdapter extends RecyclerView.Adapter<LessonsViewHolder> 
                         onClickListener.onEditBtnClick(lesson);
                         break;
                     case R.id.deleteImageBtn:
-                        onClickListener.onDeleteImageBtnClick(lesson, position);
+                        onClickListener.onDeleteImageBtnClick(lesson, position, holder);
                         break;
                     default:
                         break;
@@ -94,6 +94,6 @@ public class LessonsListAdapter extends RecyclerView.Adapter<LessonsViewHolder> 
 
         void onEditBtnClick(final LessonDbModel lesson);
 
-        void onDeleteImageBtnClick(final LessonDbModel lesson, final int position);
+        void onDeleteImageBtnClick(final LessonDbModel lesson, final int position, final LessonsViewHolder holder);
     }
 }

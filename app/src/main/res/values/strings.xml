@@ -60,6 +60,11 @@
     <string name="undo">Cofnij</string>
     <string name="deleted">Usunięto</string>
     <string name="yes">tak</string>
+    <string name="lessonsFragmentTitle">Lista lekcji</string>
+    <string name="areYouSureToDelete">Czy na pewno usunąć lekcję?</string>
+    <string name="lessonEditorTitle">Edytor lekcji</string>
+    <string name="inputAllDate">Wprowadź wszystkie dane</string>
+    <string name="lessonCreatorTitle">Kreator nowej lekcji</string>
 
     <string-array name="defaultLessons">
         <item>Czasowniki - część I</item>

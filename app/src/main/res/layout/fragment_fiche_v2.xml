@@ -16,7 +16,7 @@
             android:layout_height="500dp"
             android:clickable="true"
             app:left_swipe_detect="false"
-            app:max_visible="5"
+            app:max_visible="10"
             app:right_swipe_detect="false"
             app:rotation_degrees="15.5" />
 

@@ -18,6 +18,7 @@ import com.project.mzglinicki.yourowndictionary.activities.LearnActivity;
 import com.project.mzglinicki.yourowndictionary.activities.LessonCreator;
 import com.project.mzglinicki.yourowndictionary.activities.MainActivity;
 import com.project.mzglinicki.yourowndictionary.adapters.LessonsListAdapter;
+import com.project.mzglinicki.yourowndictionary.adapters.LessonsViewHolder;
 import com.project.mzglinicki.yourowndictionary.realmDb.LessonDbModel;
 import com.project.mzglinicki.yourowndictionary.realmDb.RealmDbHelper;
 
@@ -54,7 +55,7 @@ public class LessonsFragment extends Fragment implements LessonsListAdapter.OnCl
     public void onStart() {
         super.onStart();
         ((MainActivity) getActivity()).toggleFABVisibility();
-        ((MainActivity) getActivity()).setToolbarTitle("Lista lekcji");
+        ((MainActivity) getActivity()).setToolbarTitle(getString(R.string.lessonsFragmentTitle));
         listAdapter.notifyDataSetChanged();
     }
 
@@ -91,23 +92,21 @@ public class LessonsFragment extends Fragment implements LessonsListAdapter.OnCl
     }
 
     @Override
-    public void onDeleteImageBtnClick(final LessonDbModel lesson, final int position) {
+    public void onDeleteImageBtnClick(final LessonDbModel lesson, final int position, final LessonsViewHolder holder) {
 
-        if (lessonDbModels.size() < 4) {
-            Toast.makeText(getContext(), "Nie może być mniej lekcji", Toast.LENGTH_LONG).show();
-        } else {
-            showSnackbar(lesson, position);
-        }
+        showSnackbar(lesson, position, holder);
     }
 
-    private void showSnackbar(final LessonDbModel lesson, final int position) {
+    private void showSnackbar(final LessonDbModel lesson, final int position, final LessonsViewHolder holder) {
         final Snackbar snackbar = Snackbar
-                .make(recycleView, "Czy na pewno usunąć lekcję?", Snackbar.LENGTH_LONG)
+                .make(recycleView, getString(R.string.areYouSureToDelete), Snackbar.LENGTH_LONG)
                 .setAction(R.string.yes, new View.OnClickListener() {
                     @Override
                     public void onClick(final View view) {
                         dbHelper.deleteLessonFromDb(lesson.getLessonId());
-                        listAdapter.notifyItemRemoved(position);
+//                        listAdapter.notifyItemRangeChanged(0, listAdapter.getItemCount());
+                        listAdapter.notifyItemRemoved(holder.getAdapterPosition());
+//                        listAdapter.notifyItemSetChanged(holder.getAdapterPosition());
                     }
                 });
         snackbar.show();

@@ -1,13 +1,18 @@
 package com.project.mzglinicki.yourowndictionary.fragments.learnActivity;
 
+import android.os.Build;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.AppCompatEditText;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.project.mzglinicki.yourowndictionary.AppUtility;
+import com.project.mzglinicki.yourowndictionary.CustomLayoutManager;
 import com.project.mzglinicki.yourowndictionary.R;
 import com.project.mzglinicki.yourowndictionary.adapters.WritingFragmentAdapter;
 import com.project.mzglinicki.yourowndictionary.adapters.WritingFragmentViewHolder;
@@ -29,10 +34,11 @@ public class LearnWritingFragment extends LearnFragmentParent implements Writing
     private int correctAnswer = 0;
     private WritingFragmentAdapter adapter;
     private AppUtility appUtilityManager;
+    private LinearLayoutManager layoutManager;
 
     public LearnWritingFragment() {
         titleId = R.string.tab_practiceSpelling;
-        layoutId = R.layout.fragment_writing_v2;
+        layoutId = R.layout.fragment_writing;
     }
 
     @Override
@@ -43,8 +49,9 @@ public class LearnWritingFragment extends LearnFragmentParent implements Writing
         adapter = new WritingFragmentAdapter(getContext(), listOfWords, this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
-        final LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(horizontalLayoutManager);
+        layoutManager = new CustomLayoutManager(getContext());
+
+        recyclerView.setLayoutManager(layoutManager);
 
         setOnTouchListener(nestedScrollView);
     }
@@ -68,14 +75,28 @@ public class LearnWritingFragment extends LearnFragmentParent implements Writing
     public void onSkipPreviousImageBtnClick(final WritingFragmentViewHolder holder) {
 //        clearAppCompatEditTexts(holder);
         appUtilityManager.hideSoftInput(nestedScrollView);
-        recyclerView.scrollToPosition(holder.getAdapterPosition() - 1);
+        if (holder.getAdapterPosition() == 0) {
+            return;
+        }
+        recyclerView.smoothScrollToPosition(holder.getAdapterPosition() - 1);
+//        recyclerView.setNextFocusUpId(holder.getAdapterPosition() - 1);
+
+//recyclerView.setScrollIndicators();
+//        Toast.makeText(getContext(), "skip previous", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onSkipNextImageBtnClick(final WritingFragmentViewHolder holder) {
+    public void onSkipNextImageBtnClick(final WritingFragmentViewHolder holder, final int position) {
 //        clearAppCompatEditTexts(holder);
         appUtilityManager.hideSoftInput(nestedScrollView);
-        recyclerView.scrollToPosition(holder.getAdapterPosition() + 1);
+        recyclerView.smoothScrollToPosition(holder.getAdapterPosition() + 1);
+//        recyclerView.smoothScrollToPosition(position + 2);
+//        layoutManager.findFirstCompletelyVisibleItemPosition();
+//        findFirstVisibleItemPosition()
+//        findFirstCompletelyVisibleItemPosition()
+//        findLastVisibleItemPosition()
+//        findLastCompletelyVisibleItemPosition()
+//        Toast.makeText(getContext(), "skip next", Toast.LENGTH_SHORT).show();
     }
 
     @Override

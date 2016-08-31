@@ -77,7 +77,7 @@ public class RealmDbHelper {
         final String[] defaultLessons = context.getResources().getStringArray(R.array.defaultLessons);
 
         for (final String defaultLesson : defaultLessons) {
-            createLessonInDb(defaultLesson, getRandomLessonImage());
+            createLessonInDb(defaultLesson);
         }
     }
 
@@ -97,14 +97,14 @@ public class RealmDbHelper {
         return images.get(random.nextInt(images.size()));
     }
 
-    public int createLessonInDb(final String lessonName, final int lessonImageResId) {
+    public int createLessonInDb(final String lessonName) {
 
         realm = Realm.getDefaultInstance();
         realm.beginTransaction();
         final LessonDbModel lesson = realm.createObject(LessonDbModel.class);
         int newLessonID = getLessonModelId(lesson, realm.where(LessonDbModel.class).findAll().size());
         lesson.setLessonName(lessonName);
-        lesson.setLessonImageResId(lessonImageResId);
+        lesson.setLessonImageResId(getRandomLessonImage());
         realm.commitTransaction();
         realm.close();
         return newLessonID;
@@ -198,12 +198,11 @@ public class RealmDbHelper {
         realm.close();
     }
 
-    public void updateLessonData(final String lessonName, final int lessonImageResId, final int lessonId) {
+    public void updateLessonData(final String lessonName, final int lessonId) {
         realm = Realm.getDefaultInstance();
         realm.beginTransaction();
         final LessonDbModel lesson = realm.where(LessonDbModel.class).equalTo(Constants.LESSON_ID_COLUMN, lessonId).findFirst();
         lesson.setLessonName(lessonName);
-        lesson.setLessonImageResId(lessonImageResId);
         realm.commitTransaction();
         realm.close();
     }

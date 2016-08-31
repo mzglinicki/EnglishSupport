@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -22,6 +23,8 @@ import butterknife.OnClick;
  */
 public class MainActivity extends AppCompatActivity {
 
+    @Bind(R.id.placeHolder)
+    NestedScrollView placeHolder;
     @Bind(R.id.toolbar)
     Toolbar toolbar;
     @Bind(R.id.collapsingToolbar)
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         initToolbar();
 
         setupMainFragment();
+//        placeHolder.fullScroll(View.FOCUS_UP);
     }
 
     private void initToolbar() {

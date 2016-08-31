@@ -29,7 +29,7 @@ public class WritingFragmentAdapter extends RecyclerView.Adapter<WritingFragment
 
     @Override
     public WritingFragmentViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
-        final View view = inflater.inflate(R.layout.learn_writing_model, parent, false);
+        final View view = inflater.inflate(R.layout.learn_horizontal_writing_model, parent, false);
         return new WritingFragmentViewHolder(view);
     }
 
@@ -45,14 +45,14 @@ public class WritingFragmentAdapter extends RecyclerView.Adapter<WritingFragment
         if (onClickListener != null) {
             onClickListener.setupCorrectAnswerAmount(holder);
         }
-        setupClickListener(holder.getReadSentenceImageBtn(), model, holder);
-        setupClickListener(holder.getReadSentenceImageBtn(), model, holder);
-        setupClickListener(holder.getSkipPreviousImageBtn(), model, holder);
-        setupClickListener(holder.getSkipNextImageBtn(), model, holder);
-        setupClickListener(holder.getCheckAnswerTextView(), model, holder);
+        setupClickListener(holder.getReadSentenceImageBtn(), model, holder, position);
+        setupClickListener(holder.getReadSentenceImageBtn(), model, holder, position);
+        setupClickListener(holder.getSkipPreviousImageBtn(), model, holder, position);
+        setupClickListener(holder.getSkipNextImageBtn(), model, holder, position);
+        setupClickListener(holder.getCheckAnswerTextView(), model, holder, position);
     }
 
-    private void setupClickListener(final View view, final WordDbModel model, final WritingFragmentViewHolder holder) {
+    private void setupClickListener(final View view, final WordDbModel model, final WritingFragmentViewHolder holder, final int position) {
 
         if (onClickListener == null) {
             return;
@@ -72,7 +72,7 @@ public class WritingFragmentAdapter extends RecyclerView.Adapter<WritingFragment
                         onClickListener.onCheckAnswerClick(model, holder);
                         break;
                     case R.id.skipNextImageBtn:
-                        onClickListener.onSkipNextImageBtnClick(holder);
+                        onClickListener.onSkipNextImageBtnClick(holder, position);
                         break;
                     case R.id.nestedScrollView:
                         onClickListener.onViewClick(holder);
@@ -105,7 +105,7 @@ public class WritingFragmentAdapter extends RecyclerView.Adapter<WritingFragment
 
         void onSkipPreviousImageBtnClick(final WritingFragmentViewHolder holder);
 
-        void onSkipNextImageBtnClick(final WritingFragmentViewHolder holder);
+        void onSkipNextImageBtnClick(final WritingFragmentViewHolder holder, final int position);
 
         void onViewClick(final WritingFragmentViewHolder holder);
     }

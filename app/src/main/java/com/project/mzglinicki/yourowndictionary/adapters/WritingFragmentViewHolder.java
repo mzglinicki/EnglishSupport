@@ -21,8 +21,8 @@ import butterknife.ButterKnife;
  */
 public class WritingFragmentViewHolder extends RecyclerView.ViewHolder {
 
-    @Bind(R.id.nestedScrollView)
-    NestedScrollView nestedScrollView;
+//    @Bind(R.id.nestedScrollView)
+//    NestedScrollView nestedScrollView;
     @Bind(R.id.polishWord)
     TextView polishWordTextView;
     @Bind(R.id.englishWordLayout)
@@ -115,7 +115,7 @@ public class WritingFragmentViewHolder extends RecyclerView.ViewHolder {
         return listToClear;
     }
 
-    public NestedScrollView getNestedScrollView() {
-        return nestedScrollView;
-    }
+//    public NestedScrollView getNestedScrollView() {
+//        return nestedScrollView;
+//    }
 }

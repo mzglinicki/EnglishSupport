@@ -46,7 +46,7 @@ public class LearnActivity extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_learn_v2);
+        setContentView(R.layout.activity_learn);
         ButterKnife.bind(this);
 
         dbHelper = RealmDbHelper.getInstance(this);

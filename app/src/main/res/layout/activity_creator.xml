@@ -75,21 +75,21 @@
             </android.support.design.widget.TextInputLayout>
 
             <!--<in.arjsna.swipecardlib.SwipeCardView-->
-                <!--android:id="@+id/cardViewFrame"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="200dp"-->
-                <!--app:bottom_swipe_detect="false"-->
-                <!--app:rotation_degrees="15.5" />-->
+            <!--android:id="@+id/cardViewFrame"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="200dp"-->
+            <!--app:bottom_swipe_detect="false"-->
+            <!--app:rotation_degrees="15.5" />-->
 
             <!--<TextView-->
-                <!--android:id="@+id/selectImageTextView"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_margin="@dimen/mainMargin"-->
-                <!--android:gravity="end"-->
-                <!--android:text="Wybierz"-->
-                <!--android:textColor="@color/accent"-->
-                <!--android:textSize="@dimen/subheadingTextSize" />-->
+            <!--android:id="@+id/selectImageTextView"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="@dimen/mainMargin"-->
+            <!--android:gravity="end"-->
+            <!--android:text="Wybierz"-->
+            <!--android:textColor="@color/accent"-->
+            <!--android:textSize="@dimen/subheadingTextSize" />-->
 
             <RelativeLayout
                 android:id="@+id/wordListHeader"
@@ -136,21 +136,21 @@
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/closeEditFAB"
+        android:id="@+id/saveEditFAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="100dp"
-        android:src="@drawable/ic_close_white"
+        android:src="@drawable/ic_mode_edit_white"
         android:visibility="gone"
         app:layout_anchor="@id/appBar"
         app:layout_anchorGravity="bottom|right|end" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/saveEditFAB"
+        android:id="@+id/closeEditFAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/mainMargin"
-        android:src="@drawable/ic_mode_edit_white"
+        android:src="@drawable/ic_close_white"
         android:visibility="gone"
         app:layout_anchor="@id/appBar"
         app:layout_anchorGravity="bottom|right|end" />
